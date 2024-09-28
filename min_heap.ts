@@ -8,11 +8,10 @@ export class MinHeap{
     }
 
     public mostrar_acciones(): void{
-        console.log("Acciones: ")
+        console.log("Acciones en venta: ")
         this.heap.forEach((accion, indice) => {
-            console.log(`${indice}) \nCompañia: ${accion.get_nombre_de_la_compannia} \nNumero de acciones: ${accion.get_numero_de_accion} \nPrecio minimo por cada accion: ${accion.get_precio_por_accion} \nNombre del vendedor: ${accion.get_nombre_del_usuario}`)
+            console.log(`${indice + 1}) \nCompañia: ${accion.get_nombre_de_la_compannia()} \nNumero de acciones: ${accion.get_numero_de_accion()} \nPrecio minimo por cada accion: ${accion.get_precio_por_accion()} \nNombre del vendedor: ${accion.get_nombre_del_usuario()}\n`)
         });
-        console.log(this.heap)
     }
 
     public raiz(): Acciones | null{

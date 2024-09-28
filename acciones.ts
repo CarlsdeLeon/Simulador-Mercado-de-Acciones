@@ -3,7 +3,6 @@ export class Acciones{
     private numero_de_accion: number;
     private precio_por_accion: number;
     private nombre_del_usuario: string;
-    private total: number;
 
     constructor(nombre_de_compannia: string, numero_de_acciones: number, precio_por_accion: number, nombre_del_vendedor: string){
         this.nombre_de_compannia = nombre_de_compannia;

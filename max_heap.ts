@@ -8,10 +8,10 @@ export class MaxHeap {
     }
 
     public mostrar_acciones(): void{
+        console.log("Compra de acciones: ")
         this.heap.forEach((accion, indice) => {
-            console.log(`${indice}) \nCompañia: ${accion.get_nombre_de_la_compannia} \nNumero de acciones: ${accion.get_numero_de_accion} \nPrecio maximo por cada accion: ${accion.get_precio_por_accion} \nNombre del comprador: ${accion.get_nombre_del_usuario}`)
+            console.log(`${indice + 1}) \nCompañia: ${accion.get_nombre_de_la_compannia()} \nNumero de acciones: ${accion.get_numero_de_accion()} \nPrecio maximo por cada accion: ${accion.get_precio_por_accion()} \nNombre del comprador: ${accion.get_nombre_del_usuario()}\n`)
         });
-        console.log(this.heap)
     }
 
     public raiz(): Acciones | null {

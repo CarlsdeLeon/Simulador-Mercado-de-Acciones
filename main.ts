@@ -1,16 +1,20 @@
 import { MinHeap } from "./min_heap";
 import { MaxHeap } from "./max_heap";
 import { Acciones } from "./acciones";
-import { AccionVendedor } from './accion_vendedor';
 
 
 
 class Operador {
     private lista_transacciones_realizadas: string[];
-    private lista_psibles_trasacciones: string[];
+    private lista_posibles_trasacciones: string[];
 
     private min_heap: MinHeap = new MinHeap();
     private max_heap: MaxHeap = new MaxHeap();
+
+    constructor(){
+        this.lista_transacciones_realizadas = [];
+        this.lista_posibles_trasacciones = [];
+    }
 
 
     public agregar_compador(accion: Acciones):void {
@@ -28,10 +32,14 @@ class Operador {
     }
 
     public mostrar_posibles_transacciones():void {
-        console.log(this.lista_psibles_trasacciones)
+        console.log(this.lista_posibles_trasacciones)
     }
 
-    private comparar_transacciones():void{
+    private comparar_para_vendedor():void{
+
+    }
+
+    private comparar_para_comprador():void{
 
     }
 }
@@ -40,3 +48,5 @@ class Operador {
 let manejo_de_acciones: Operador  = new Operador();
 
 manejo_de_acciones.agragar_vendedor(new Acciones("Cocacola", 15, 800, "carlitos"))
+
+manejo_de_acciones.agregar_compador(new Acciones("Pepsi", 7, 150, "ricardito"))
