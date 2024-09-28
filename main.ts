@@ -20,11 +20,13 @@ class Operador {
     public agregar_compador(accion: Acciones):void {
         this.max_heap.anniadir(accion);
         this.max_heap.mostrar_acciones();
+        this.comparar_para_comprador();
     }
 
     public agragar_vendedor(accion: Acciones):void {
         this.min_heap.anniadir(accion);
         this.min_heap.mostrar_acciones();
+        this.comparar_para_vendedor();
     }
 
     public mostrar_historial():void {
