@@ -7,6 +7,14 @@ export class MinHeap{
         this.heap = [];
     }
 
+    public mostrar_acciones(): void{
+        console.log("Acciones: ")
+        this.heap.forEach((accion, indice) => {
+            console.log(`${indice}) \nCompañia: ${accion.get_nombre_de_la_compannia} \nNumero de acciones: ${accion.get_numero_de_accion} \nPrecio minimo por cada accion: ${accion.get_precio_por_accion} \nNombre del vendedor: ${accion.get_nombre_del_usuario}`)
+        });
+        console.log(this.heap)
+    }
+
     public raiz(): Acciones | null{
         if (this.heap.length === 0) return null;
         return this.heap[0];
@@ -17,10 +25,10 @@ export class MinHeap{
         this.reorganizar_heap_arriba();
     }
 
-    public reorganizar_heap_arriba(): void{
+    private reorganizar_heap_arriba(): void{
         let index = this.heap.length - 1;
 
-        while (this.tiene_padre(index) && this.padre(index).get_precio_de_accion() > this.heap[index].get_precio_de_accion()){
+        while (this.tiene_padre(index) && this.padre(index).get_precio_por_accion() > this.heap[index].get_precio_por_accion()){
             this.cambio(this.obtener_index_padre(index), index);
             index = this.obtener_index_padre(index);
         }
@@ -61,11 +69,11 @@ export class MinHeap{
         while (this.tiene_padre(index)){
             let hijo_mas_pequennio_index = this.obtener_index_hijo_izquierdo(index);
 
-            if (this.tiene_hijo_derecho(index) && this.hijo_derecho(index).get_precio_de_accion() < this.hijo_izquierdo(index).get_precio_de_accion()){
+            if (this.tiene_hijo_derecho(index) && this.hijo_derecho(index).get_precio_por_accion() < this.hijo_izquierdo(index).get_precio_por_accion()){
                 hijo_mas_pequennio_index = this.obtener_index_hijo_derecho(index);
             }
 
-            if (this.heap[index].get_precio_de_accion() < this.heap[hijo_mas_pequennio_index].get_precio_de_accion()){
+            if (this.heap[index].get_precio_por_accion() < this.heap[hijo_mas_pequennio_index].get_precio_por_accion()){
                 break;
             } else {
                 this.cambio(index, hijo_mas_pequennio_index);
