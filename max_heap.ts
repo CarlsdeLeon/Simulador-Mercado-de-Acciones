@@ -7,18 +7,22 @@ export class MaxHeap {
         this.heap = [];
     }
 
-    public vender(vendedor: Acciones):string {
-        this.heap.forEach((element) => {
-            if (vendedor.get_nombre_de_la_compannia() == element.get_nombre_de_la_compannia()){
-                if (vendedor.get_precio_por_accion() <= element.get_precio_por_accion()){
-                    return `Nombre de la compañia: ${vendedor.get_nombre_de_la_compannia()}\nNumero de acciones: ${element.get_numero_de_accion()}\nPrecio por accion: ${vendedor.get_precio_por_accion()}\nSubtotal: ${vendedor.get_precio_por_accion() * vendedor.get_numero_de_accion()}\nTransaccion entre ${element.get_nombre_del_usuario()} y ${vendedor.get_nombre_del_usuario()}\n (comprado)`;
-                }else{
-                    return `Nombre de la compañia: ${vendedor.get_nombre_de_la_compannia()}\nNumero de acciones: ${element.get_numero_de_accion()}\nPrecio por accion: ${vendedor.get_precio_por_accion()}\nSubtotal: ${vendedor.get_precio_por_accion() * vendedor.get_numero_de_accion()}\nTransaccion entre ${element.get_nombre_del_usuario()} y ${vendedor.get_nombre_del_usuario()}\n (por comprar)`;
+    public vender(vendedor: Acciones): string {
+        for (let element of this.heap) { 
+            if (vendedor.get_nombre_de_la_compannia() == element.get_nombre_de_la_compannia() && element.get_numero_de_accion() <= vendedor.get_numero_de_accion()) {
+                if (vendedor.get_precio_por_accion() <= element.get_precio_por_accion()) {
+
+                    return `\nNombre de la compañia: ${vendedor.get_nombre_de_la_compannia()}\nNumero de acciones: ${element.get_numero_de_accion()}\nPrecio minimo por accion: ${vendedor.get_precio_por_accion()}\nSubtotal: ${vendedor.get_precio_por_accion() * element.get_numero_de_accion()}\nTransaccion entre ${element.get_nombre_del_usuario()} y ${vendedor.get_nombre_del_usuario()}\nTipo de operacion: Comprado`;
+                
+                } else {
+                    return `\nNombre de la compañia: ${vendedor.get_nombre_de_la_compannia()}\nNumero de acciones: ${element.get_numero_de_accion()}\nPrecio minimo por accion: ${vendedor.get_precio_por_accion()}\nSubtotal: ${vendedor.get_precio_por_accion() * element.get_numero_de_accion()}\nTransaccion entre ${element.get_nombre_del_usuario()} y ${vendedor.get_nombre_del_usuario()}\nTipo de operacion: Por comprar`;
+                
                 }
             }
-        })
-        return "falso";
+        }
+        return ``;
     }
+    
 
     public mostrar_acciones(): void{
         console.log("Compra de acciones: ")

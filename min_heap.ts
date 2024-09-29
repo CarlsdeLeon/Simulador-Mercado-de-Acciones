@@ -7,15 +7,20 @@ export class MinHeap{
         this.heap = [];
     }
 
-    public comparar(comparador: Acciones):string{
-        this.heap.forEach((element) => {
-            if (comparador.get_nombre_de_la_compannia() == element.get_nombre_de_la_compannia()){
-                if (comparador.get_precio_por_accion() >= element.get_precio_por_accion()){
-                    return "hola";
+    public comparar(comprador: Acciones):string{
+        for (let element of this.heap) { 
+            if (comprador.get_nombre_de_la_compannia() == element.get_nombre_de_la_compannia() && comprador.get_numero_de_accion() <= element.get_numero_de_accion()) {
+                if (comprador.get_precio_por_accion() >= element.get_precio_por_accion()) {
+
+                    return `\nNombre de la compañia: ${element.get_nombre_de_la_compannia()}\nNumero de acciones: ${comprador.get_numero_de_accion()}\nPrecio minimo por accion: ${element.get_precio_por_accion()}\nSubtotal: ${element.get_precio_por_accion() * comprador.get_numero_de_accion()}\nTransaccion entre ${comprador.get_nombre_del_usuario()} y ${element.get_nombre_del_usuario()}\nTipo de operacion: Comprado`;
+                
+                } else {
+                    return `\nNombre de la compañia: ${element.get_nombre_de_la_compannia()}\nNumero de acciones: ${comprador.get_numero_de_accion()}\nPrecio minimo por accion: ${element.get_precio_por_accion()}\nSubtotal: ${element.get_precio_por_accion() * comprador.get_numero_de_accion()}\nTransaccion entre ${comprador.get_nombre_del_usuario()} y ${element.get_nombre_del_usuario()}\nTipo de operacion: Por comprar`;
+                
                 }
             }
-        })
-        return "falso";
+        }
+        return ``;
     }
 
     public mostrar_acciones(): void{
