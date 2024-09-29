@@ -1,10 +1,23 @@
 import { Acciones } from "./acciones";
 
 export class MaxHeap {
-    private heap: Acciones[];
+    private heap: Acciones[] = [];
 
     constructor() {
         this.heap = [];
+    }
+
+    public vender(vendedor: Acciones):string {
+        this.heap.forEach((element) => {
+            if (vendedor.get_nombre_de_la_compannia() == element.get_nombre_de_la_compannia()){
+                if (vendedor.get_precio_por_accion() <= element.get_precio_por_accion()){
+                    return `Nombre de la compañia: ${vendedor.get_nombre_de_la_compannia()}\nNumero de acciones: ${element.get_numero_de_accion()}\nPrecio por accion: ${vendedor.get_precio_por_accion()}\nSubtotal: ${vendedor.get_precio_por_accion() * vendedor.get_numero_de_accion()}\nTransaccion entre ${element.get_nombre_del_usuario()} y ${vendedor.get_nombre_del_usuario()}\n (comprado)`;
+                }else{
+                    return `Nombre de la compañia: ${vendedor.get_nombre_de_la_compannia()}\nNumero de acciones: ${element.get_numero_de_accion()}\nPrecio por accion: ${vendedor.get_precio_por_accion()}\nSubtotal: ${vendedor.get_precio_por_accion() * vendedor.get_numero_de_accion()}\nTransaccion entre ${element.get_nombre_del_usuario()} y ${vendedor.get_nombre_del_usuario()}\n (por comprar)`;
+                }
+            }
+        })
+        return "falso";
     }
 
     public mostrar_acciones(): void{

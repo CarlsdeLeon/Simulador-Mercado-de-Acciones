@@ -1,10 +1,21 @@
 import { Acciones } from "./acciones";
 
 export class MinHeap{
-    private heap: Acciones[];
+    private heap: Acciones[] = [];
 
     constructor() {
         this.heap = [];
+    }
+
+    public comparar(comparador: Acciones):string{
+        this.heap.forEach((element) => {
+            if (comparador.get_nombre_de_la_compannia() == element.get_nombre_de_la_compannia()){
+                if (comparador.get_precio_por_accion() >= element.get_precio_por_accion()){
+                    return "hola";
+                }
+            }
+        })
+        return "falso";
     }
 
     public mostrar_acciones(): void{
